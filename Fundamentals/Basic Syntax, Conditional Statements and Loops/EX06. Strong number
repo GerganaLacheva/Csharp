@@ -8,20 +8,20 @@ namespace EX06._Strong_number
         {
             int input = int.Parse(Console.ReadLine());
             int initialValue = input;
-            int sumFactoriel = 0;
+            int sumFactorial = 0;
 
             while (input > 0)
             {
                 int currentNumber = input % 10;
-                int factoriel = 1;
+                int factorial = 1;
                 for (int i = 1; i <= currentNumber; i++)
                 {
-                    factoriel *= i;
+                    factorial *= i;
                 }
-                sumFactoriel += factoriel;
+                sumFactorial += factorial;
                 input /= 10;
             }
-            if (initialValue == sumFactoriel)
+            if (initialValue == sumFactorial)
             {
                 Console.WriteLine("yes");
             }
