@@ -10,18 +10,8 @@ namespace EX02._Common_Elements
             string[] arr1 = Console.ReadLine().Split(" ");
             string[] arr2 = Console.ReadLine().Split(" ");
 
-            for (int i = 0; i < arr2.Length; i++)
-            {
-                string currentString = arr2[i];
-
-                for (int j = 0; j < arr1.Length; j++)
-                {
-                    if (currentString==arr1[j])
-                    {
-                        Console.Write(currentString+" ");
-                    }
-                }
-            }
+            string[] intersection = arr2.Intersect(arr1).ToArray();
+            Console.WriteLine(string.Join(" ", intersection));
         }
     }
 }
