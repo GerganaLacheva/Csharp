@@ -17,7 +17,7 @@ namespace _02._Print_Numbers_in_Reverse_Order
             }
             Console.WriteLine(string.Join(" ", numbers.Reverse()));
             
-            
+            //при отпечатване с Join елиминираме интервала след последния елемент
             //отпечатване с for-loop:
             //for (int i = numbers.Length - 1; i >= 0; i--)
             //{
