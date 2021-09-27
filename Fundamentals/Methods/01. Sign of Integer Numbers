@@ -1,0 +1,37 @@
+using System;
+
+namespace _01._Sign_of_Integer_Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int number = int.Parse(Console.ReadLine());
+            Console.WriteLine(SignChecker(number));
+
+            static string SignChecker (int number)
+            {
+                string sign = "";
+                if (number>0)
+                {
+                    sign = "positive";
+                }
+                else if (number<0)
+                {
+                    sign = "negative";
+                }
+                else
+                {
+                    sign = "zero";
+                }
+                return $"The number {number} is {sign}.";
+            }
+        }
+    }
+}
+//1.Sign of Integer Numbers
+//Create a method that checks whether a number is positive, negative or zero and prints the result to the console.
+//Examples	
+//Input	Output
+// 2	The number 2 is positive.
+//-9	The number -9 is negative.
