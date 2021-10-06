@@ -9,7 +9,7 @@ namespace EX08._Factorial_Division
             int num1 = int.Parse(Console.ReadLine());
             int num2 = int.Parse(Console.ReadLine());
 
-            double num1Factoral = CalculateFactorial(num1);
+            double num1Factoral = CalculateFactorial(num1);     
             double num2Factoral = CalculateFactorial(num2);
 
             double result = num1Factoral / num2Factoral;
@@ -19,7 +19,7 @@ namespace EX08._Factorial_Division
         private static double CalculateFactorial(int num)
         {
             double factorial = 1;
-            for (int i = 2; i <= num; i++)
+            for (int i = 1; i <= num; i++)      //int i = 2 ->>dismiss the first iteration where 1*1=1
             {
                 factorial *= i;
             }
