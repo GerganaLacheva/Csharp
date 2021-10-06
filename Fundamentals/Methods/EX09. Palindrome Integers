@@ -1,0 +1,44 @@
+using System;
+
+namespace EX09._Palindrome_Integers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (input=="END")
+                {
+                    break;
+                }
+                Console.WriteLine(IsPalindrome(input));
+            }
+        }
+
+        private static bool IsPalindrome(string input)
+        {
+            for (int i = 0; i < input.Length/2; i++)
+            {
+                if (input[i]!=input[input.Length-1-i])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+}
+//9.Palindrome Integers
+//Create a program that reads positive integers until you receive the "END" command.  For each number, print whether the number is a palindrome or not. A palindrome is a number which reads the same backward as forward, such as 323 or 1001. 
+//Examples
+//Input	Output		
+//123     false
+//323     true
+//421     false
+//121     true
+//END	
+
+
+
