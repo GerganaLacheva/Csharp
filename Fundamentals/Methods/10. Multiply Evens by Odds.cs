@@ -17,9 +17,9 @@ namespace _10._Multiply_Evens_by_Odds
         private static int GetMultipleOfEvenAndOdds(int sumEven, int sumOdd)
         {
             int number = Math.Abs(int.Parse(Console.ReadLine()));
-            while (number>0)
+            while (number > 0)
             {
-                if (number%2==0)
+                if (number % 2 == 0)
                 {
                     sumEven += number % 10;
                     number /= 10;
@@ -30,7 +30,7 @@ namespace _10._Multiply_Evens_by_Odds
                     number /= 10;
                 }
             }
-            
+
             return sumEven * sumOdd;
         }
     }
