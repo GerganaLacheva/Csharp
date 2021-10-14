@@ -1,56 +1,81 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace _02._The_Lift
+namespace Problem_2___The_Lift
 {
     class Program
     {
         static void Main(string[] args)
         {
             int peopleOnQueue = int.Parse(Console.ReadLine());
-            int[] lift = Console.ReadLine().Split().Select(int.Parse).ToArray();
 
-            int peopleOnTheCurrentlift = 0;
-            int peopleOnTheLift = 0;
-            bool noPeopleLeft = false;
+            int[] lift = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToArray();
+
+            int maxCapacity = 4;
+
+            bool noPeopleWaiting = false;
 
             for (int i = 0; i < lift.Length; i++)
             {
-                while (lift[i] < 4)
+                int currentWagon = lift[i];
+
+                if (peopleOnQueue - (maxCapacity - currentWagon) == 0)
                 {
-                    lift[i]++;
-                    peopleOnTheCurrentlift++;
-                    if (peopleOnTheLift + peopleOnTheCurrentlift == peopleOnQueue)
-                    {
-                        noPeopleLeft = true;
-                        break;
-                    }
-                }
-                peopleOnTheLift += peopleOnTheCurrentlift;
-                if (noPeopleLeft)
-                {
+                    peopleOnQueue -= maxCapacity - currentWagon;
+                    lift[i] = 4;
+                    noPeopleWaiting = true;
                     break;
                 }
-                peopleOnTheCurrentlift = 0;
+                else if (peopleOnQueue - (maxCapacity - currentWagon) < 0)
+                {
+                    lift[i] = peopleOnQueue;
+                    peopleOnQueue = 0;
+                    noPeopleWaiting = true;
+                    break;
+                }
+                else
+                {
+                    peopleOnQueue -= maxCapacity - currentWagon;
+                    lift[i] = 4;
+                }
             }
 
-            if (peopleOnQueue > peopleOnTheLift)
+            bool emptyWagons = false;
+
+            for (int i = 0; i < lift.Length; i++)
             {
-                Console.WriteLine($"There isn't enough space! {peopleOnQueue - peopleOnTheLift} people in a queue!");
-                Console.WriteLine(string.Join(" ", lift));
+                if (lift[i] < 4)
+                {
+                    emptyWagons = true;
+                    break;
+                }
             }
-            else if (peopleOnQueue < lift.Length * 4 && lift.Any(w => w < 4))
+
+            if (noPeopleWaiting == true && emptyWagons == true)
             {
                 Console.WriteLine("The lift has empty spots!");
-                Console.WriteLine(string.Join(" ", lift));
+                Console.WriteLine(String.Join(" ", lift));
+
             }
-            else if (lift.All(w => w == 4) && noPeopleLeft == true)
+            else if (peopleOnQueue > 0 && emptyWagons == false)
             {
-                Console.WriteLine(string.Join(" ", lift));
+                Console.WriteLine($"There isn't enough space! {peopleOnQueue} people in a queue!");
+                Console.WriteLine(String.Join(" ", lift));
+            }
+            else if (peopleOnQueue == 0 && emptyWagons == false)
+            {
+                Console.WriteLine(String.Join(" ", lift));
             }
         }
     }
 }
+
 //Write a program that finds a place for the tourist on a lift. 
 //Every wagon should have a maximum of 4 people on it. If a wagon is full, you should direct the people to the next one with space available.
 //Input
