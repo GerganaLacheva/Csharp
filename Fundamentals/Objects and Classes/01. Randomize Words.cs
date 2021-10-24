@@ -21,7 +21,7 @@ namespace _01.Randomize_Words_Lab
                 words[i] = words[position];                     //разменяме местата
                 words[position] = word;                         //разменяме местата
             }
-            Console.Write(string.Join('\n',words));
+            Console.WriteLine(string.Join(Environment.NewLine,words));  //Environment.NewLine дава нов ред (== '\n')
         }
     }
 }
@@ -37,3 +37,4 @@ namespace _01.Randomize_Words_Lab
 //programming
 //have
 //to	The order of the words in the output will be different after each program execution.
+
