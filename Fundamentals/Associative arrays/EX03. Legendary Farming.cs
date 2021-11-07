@@ -29,28 +29,17 @@ namespace EX03.Legendary_Farming
                     int value = int.Parse(input[i]);
                     string element = input[i + 1].ToLower();
 
-                    if (element == "shards")
+                    if (element == "shards"|| element == "fragments"|| element == "motes")
                     {
-                        items["shards"] += value;
-                    }
-                    else if (element == "fragments")
-                    {
-                        items["fragments"] += value;
-                    }
-                    else if (element == "motes")
-                    {
-                        items["motes"] += value;
+                        items[element] += value;
                     }
                     else
                     {
                         if (!junks.ContainsKey(element))
                         {
-                            junks.Add(element, value);
+                            junks.Add(element, 0);
                         }
-                        else
-                        {
                             junks[element] += value;
-                        }
                     }
 
                     if (items.Values.Any(x => x >= 250))
@@ -60,6 +49,7 @@ namespace EX03.Legendary_Farming
                     }
                 }
             }
+
             if (items["motes"] >= 250)
             {
                 items["motes"] -= 250;
@@ -128,3 +118,4 @@ namespace EX03.Legendary_Farming
 //fragments: 0
 //fangs: 9
 //silver: 123
+
