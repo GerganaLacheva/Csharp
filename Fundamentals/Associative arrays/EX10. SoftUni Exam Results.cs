@@ -1,3 +1,72 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EX10.SoftUniExamResults
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+
+            Dictionary<string, int> students = new Dictionary<string, int>();
+            Dictionary<string, int> submissions = new Dictionary<string, int>();
+
+            while (input != "exam finished")
+            {
+                string[] commandArguments = input.Split('-');
+                string user = commandArguments[0];
+
+                if (commandArguments.Length > 2)            //{username}-{language}-{points}
+                {
+                    string language = commandArguments[1];
+                    int points = int.Parse(commandArguments[2]);
+
+                    if (!students.ContainsKey(user))
+                    {
+                        students.Add(user, points);
+                    }
+                    else
+                    {
+                        if (students[user] < points)    //проверяваме дали текущите точки са по-малко от точките
+                        {
+                            students[user] = points;    //и ако са по-малко -> взимаме по-големите точки
+                        }
+                    }
+                    if (!submissions.ContainsKey(language))
+                    {
+                        submissions.Add(language, 0);
+                    }
+                    submissions[language]++;
+
+                }
+                else                                        //{username}-banned
+                {
+                    students.Remove(user);
+                }
+
+
+                input = Console.ReadLine();
+            }
+            Console.WriteLine("Results:");
+
+            foreach (var student in students.OrderByDescending(x=>x.Value).ThenBy(x=>x.Key))
+            {
+                Console.WriteLine($"{student.Key} | {student.Value}");
+            }
+
+            Console.WriteLine("Submissions:");
+
+            foreach (var submission in submissions.OrderByDescending(x=>x.Value).ThenBy(x=>x.Key))
+            {
+                Console.WriteLine($"{submission.Key} - {submission.Value}");
+            }
+        }
+    }
+}
 //10. * SoftUni Exam Results
 //Judge statistics on the last Programing Fundamentals exam was not working correctly, so you have the task to take all the submissions and analyze them properly. You should collect all the submissions and print the final results and statistics about each language that the participants submitted their solutions in.
 //You will be receiving lines in the following format: "{username}-{language}-{points}" until you receive "exam finished". You should store each username and his submissions and points. 
