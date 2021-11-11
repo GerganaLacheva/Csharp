@@ -14,7 +14,7 @@ namespace EX05.Multiply_Big_Number
             int multiplier = int.Parse(Console.ReadLine());    
 
             StringBuilder sb = new StringBuilder();
-            int reminder = 0;   //запазваме остатъка, напр.12*2=24, (взимаме 4 и) 2 на ум
+            int remаinder = 0;   //запазваме остатъка, напр.12*2=24, (взимаме 4 и) 2 на ум
 
             if (input=="0" || multiplier==0)
             {
@@ -25,14 +25,14 @@ namespace EX05.Multiply_Big_Number
             for (int i = input.Length - 1; i >= 0; i--)    //започваме умножението от дясно на ляво
             {
                 int currentDigit = int.Parse(input[i].ToString());
-                int product = currentDigit * multiplier +reminder;
+                int product = currentDigit * multiplier +remаinder;
 
                 int result = product % 10; //взимаме 4
-                reminder = product / 10;    //взимаме 2
+                remаinder = product / 10;    //взимаме 2
 
                 sb.Insert(0, result);          //на всяка итерация слагаме продукта най-отпред
             }
-            if (reminder>0)     //за остатъка след умножението на най-лявото число
+            if (remаinder>0)     //за остатъка след умножението на най-лявото число
             {
                 sb.Insert(0, reminder);
             }
