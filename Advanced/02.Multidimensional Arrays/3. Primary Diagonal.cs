@@ -9,13 +9,13 @@ namespace _3._Primary_Diagonal
         {
             int n = int.Parse(Console.ReadLine());
             int[,] matrix = new int[n, n];
-            int m = n;
+            
             int sum = 0;
 
             for (int i = 0; i < n; i++)
             {
                 int[] arr = Console.ReadLine().Split().Select(int.Parse).ToArray();
-                m -= 1;
+                
                 for (int j = 0; j < n; j++)
                 {
                     matrix[i, j] = arr[j];
@@ -42,4 +42,5 @@ namespace _3._Primary_Diagonal
 //11  2   4
 //4   5   6
 //10  8  -12	    4
+
 
