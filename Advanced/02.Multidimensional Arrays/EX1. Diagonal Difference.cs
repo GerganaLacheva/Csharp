@@ -11,8 +11,8 @@ namespace EX1._Diagonal_Difference
 
             int[] matrix = new int[n];
 
-            int sumRight = 0;
-            int sumLeft = 0;
+            int sum = 0;
+
             int m = n;
 
             for (int i = 0; i < n; i++)
@@ -24,16 +24,16 @@ namespace EX1._Diagonal_Difference
                     matrix[j] = arr[i];
                     if (i == j)
                     {
-                        sumRight += arr[j];
+                        sum += arr[j];
                     }
                     if (j == m)
                     {
-                        sumLeft += arr[j];
+                        sum -= arr[j];
                     }
 
                 }
             }
-            Console.WriteLine(Math.Abs(sumRight-sumLeft));
+            Console.WriteLine(Math.Abs(sum));
         }
     }
 }
