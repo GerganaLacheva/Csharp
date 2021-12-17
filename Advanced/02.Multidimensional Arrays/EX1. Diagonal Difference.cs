@@ -18,7 +18,9 @@ namespace EX1._Diagonal_Difference
             for (int i = 0; i < n; i++)
             {
                 int[] arr = Console.ReadLine().Split().Select(int.Parse).ToArray();
-                m = m - 1;
+
+                m --;
+
                 for (int j = 0; j < n; j++)
                 {
                     matrix[j] = arr[i];
@@ -59,4 +61,5 @@ namespace EX1._Diagonal_Difference
 //Primary diagonal: sum = 11 + 5 + (-12) = 4
 //Secondary diagonal: sum = 4 + 5 + 10 = 19
 //Difference: | 4 - 19 | = 15
+
 
