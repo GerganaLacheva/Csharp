@@ -33,18 +33,18 @@ namespace MatrixShuffling
                 string command = tokens[0];
                 if (command == "swap" && tokens.Length == 5)
                 {
-                    int row1 = int.Parse(tokens[1]);
-                    int col1 = int.Parse(tokens[2]);
-                    int row2 = int.Parse(tokens[3]);
-                    int col2 = int.Parse(tokens[4]);
-                    if (row1 >= 0 && col1 >= 0
-                        && row2 >= 0 && col2 >= 0
-                        && row1 < dimensions[0] && row2 < dimensions[0]
-                        && col1 < dimensions[1] && col2 < dimensions[1])
+                    int rowIndex = int.Parse(tokens[1]);
+                    int colIndex = int.Parse(tokens[2]);
+                    int swapRowIndex = int.Parse(tokens[3]);
+                    int swapColIndex = int.Parse(tokens[4]);
+                    if (rowIndex >= 0 && colIndex >= 0
+                        && swapRowIndex >= 0 && swapColIndex >= 0
+                        && rowIndex < dimensions[0] && swapRowIndex < dimensions[0]
+                        && colIndex < dimensions[1] && swapColIndex < dimensions[1])
                     {
-                        string temp = matrix[row1, col1];
-                        matrix[row1, col1] = matrix[row2, col2];
-                        matrix[row2, col2] = temp;
+                        string tempMatrix = matrix[rowIndex, colIndex];
+                        matrix[rowIndex, colIndex] = matrix[swapRowIndex, swapColIndex];
+                        matrix[swapRowIndex, swapColIndex] = tempMatrix;
 
                         for (int i = 0; i < dimensions[0]; i++)
                         {
