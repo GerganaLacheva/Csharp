@@ -13,10 +13,8 @@ namespace _05._Cities_by_Continent_and_Country
             Dictionary<string, Dictionary<string, List<string>>> continents = new Dictionary<string, Dictionary<string, List<string>>>();
             for (int i = 0; i < n; i++)
             {
-                string[] tokens = Console.ReadLine()
-           .Split()
-           .ToArray();
-
+                string[] tokens = Console.ReadLine().Split().ToArray();
+           
                 string continent = tokens[0];
                 string country = tokens[1];
                 string city = tokens[2];
