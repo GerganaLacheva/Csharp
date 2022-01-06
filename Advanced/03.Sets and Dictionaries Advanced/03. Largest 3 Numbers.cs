@@ -9,7 +9,7 @@ namespace _03._Largest_3_Numbers
         static void Main(string[] args)
         {
             var listOfNumbers = Console.ReadLine()
-                .Split(' ')
+                .Split()
                 .Select(int.Parse)
                 .OrderByDescending(n => n)
                 .Take(3)
