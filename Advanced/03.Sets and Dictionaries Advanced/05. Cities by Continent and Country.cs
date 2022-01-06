@@ -13,23 +13,31 @@ namespace _05._Cities_by_Continent_and_Country
             Dictionary<string, Dictionary<string, List<string>>> continents = new Dictionary<string, Dictionary<string, List<string>>>();
             for (int i = 0; i < n; i++)
             {
-                string[] tokens=Console.ReadLine().Split().ToArray();
+                string[] tokens = Console.ReadLine()
+           .Split()
+           .ToArray();
 
-                if (!continents.ContainsKey(tokens[0]))
+                string continent = tokens[0];
+                string country = tokens[1];
+                string city = tokens[2];
+
+                if (!continents.ContainsKey(continent))
                 {
-                    continents.Add(tokens[0], new Dictionary<string,List<string>>());
+                    continents.Add(continent, new Dictionary<string, List<string>>());
                 }
-                if (!continents[tokens[0]].ContainsKey(tokens[1]))
+                if (!continents[continent].ContainsKey(country))
                 {
-                    continents[tokens[0]].Add(tokens[1], new List<string>());
+                    continents[continent].Add(country, new List<string>());
                 }
-                continents[tokens[0]][tokens[1]].Add(tokens[2]);
+
+                continents[continent][country].Add(city);
+
             }
 
-            foreach (var item in continents)
+            foreach (var continent in continents)
             {
-                Console.WriteLine(item.Key + ":");
-                foreach (var country in item.Value)
+                Console.WriteLine(continent.Key + ":");
+                foreach (var country in continent.Value)
                 {
                     Console.WriteLine($"  {country.Key} -> {string.Join(", ", country.Value)}");
                 }
@@ -62,3 +70,4 @@ namespace _05._Cities_by_Continent_and_Country
 //  Japan -> Tokyo
 //Africa:
 //  Nigeria->Abuja
+
